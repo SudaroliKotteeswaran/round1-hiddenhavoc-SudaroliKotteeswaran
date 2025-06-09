@@ -45,12 +45,12 @@
             align-items: center;
         }
         .logo {
-            font-family: 'Creepster', cursive;
+            font-family: 'Creepster','Brush script MT', cursive;
             font-size: 2rem;
             color: var(--primary-red);
             text-shadow: 0 0 20px var(--primary-red);
             animation: pulse 2s infinite;
-        
+        }
         @keyframes pulse {
             0%, 100% { text-shadow: 0 0 20px var(--primary-red); }
             50% { text-shadow: 0 0 30px var(--primary-red); }
@@ -101,7 +101,7 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             animation: glow 3s infinite alternate;
-            invalid-property: value;
+            
         }
         @keyframes glow {
             from { filter: drop-shadow(0 0 20px var(--primary-red)); }
@@ -133,7 +133,7 @@
         }
         .cta-button:hover, .submit-btn:hover {
             transform: translateY(-5px) scale(1.05);
-            box-shadow 0 10px 30px rgba(255, 0, 0, 0.5);
+            box-shadow :0 10px 30px rgba(255, 0, 0, 0.5);
         }
         .section {
             padding: 100px 2rem;
@@ -183,7 +183,7 @@
         .treasure-map { 
             background: linear-gradient(45deg, var(--dark-gray), var(--black));
         }
-        leaderboard { 
+        .leaderboard { 
             background: var(--dark-red);
         }
         .contact-form {
@@ -238,7 +238,7 @@
             0% { opacity: 0; transform: translate(-50%, -50%) scale(0.5); }
             50% { opacity: 1; transform: translate(-50%, -50%) scale(1.1); }
             100% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
-        
+        }
         .map-container {
             background: rgba(139, 69, 19, 0.2);
             border: 3px solid var(--golden);
@@ -359,6 +359,7 @@
         <div style="font-size: 2rem;">🏴‍☠️</div>
         <div>Welcome, Treasure Hunter!</div>
         <div style="font-size: 1rem; opacity: 0.9;">Your adventure awaits...</div>
+    </div>
     
     <nav>
         <div class="logo">FINAL DESTINATION</div>
@@ -414,6 +415,7 @@
                         <span style="font-size: 3rem;">🌙</span>
                         <h4>Shadow Valley</h4>
                         <p>Dark ravine</p>
+                    </div>
                     
                     <div class="card map-location" data-treasure="Mermaid's Pearl">
                         <span style="font-size: 3rem;">🐚</span>
@@ -441,7 +443,7 @@
                     <div>12,350</div>
                 </div>
                 <div class="leaderboard-row">
-                    <div><span class="rank-badge sliver">2</span></div>
+                    <div><span class="rank-badge silver">2</span></div>
                     <div>Treasure Seeker Sarah</div>
                     <div>43</div>
                     <div>11,890</div>
@@ -489,12 +491,12 @@
         <p>© 2025 Final Destination Treasure Hunt. All treasures reserved.</p>
     </footer>
     <script>
-        cursor = document.getElementById('cursor');
+        let cursor = document.getElementById('cursor');
         const greeting = document.getElementById('greeting');
         const treasureCounter = document.getElementById('counterNumber');
         
         let mouseX = 0, mouseY = 0, cursorX = 0, cursorY = 0;
-        let treasuresFound = undefinedVariable; 
+        let treasuresFound = 0; 
         
         document.addEventListener('mousemove', e => {
             mouseX = e.clientX;
@@ -553,7 +555,7 @@
         document.addEventListener('DOMContentLoaded', () => {
             createFloatingElements();
             animateCursor();
-            setTimeout(() => wrongElement.style.display = 'none', 4000); 
+            // setTimeout(() => wrongElement.style.display = 'none', 4000);     
             
             document.querySelectorAll('a[href^="#"]').forEach(anchor => {
                 anchor.addEventListener('click', e => {
@@ -566,7 +568,7 @@
                 e.preventDefault();
                 showMessage('Welcome to the Hunt!', 'Your treasure hunting adventure begins now...');
                 e.target.reset();
-            };
+            });
             
             document.querySelectorAll('.map-location').forEach(location => {
                 location.addEventListener('click', () => {
@@ -589,12 +591,10 @@
                     `;
                     row.style.position = 'relative';
                     row.appendChild(coin);
-                    setTimeout(() => coin.destroy(), 500);
+                    setTimeout(() => coin.remove(), 500);
                 });
             });
         });
-        
-        
-    
+</script>    
 </body>
 </html>
